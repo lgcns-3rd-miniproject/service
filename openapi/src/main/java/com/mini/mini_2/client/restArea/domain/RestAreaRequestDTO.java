@@ -1,4 +1,4 @@
-package com.mini.mini_2.client.restArea.domain;
+package com.mini.mini_2.client.restarea.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
