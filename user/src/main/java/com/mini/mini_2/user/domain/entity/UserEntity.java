@@ -1,21 +1,14 @@
 package com.mini.mini_2.user.domain.entity;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-import com.mini.mini_2.favorite.domain.entity.FavoriteEntity;
-import com.mini.mini_2.review.domain.entity.ReviewEntity;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -55,18 +48,5 @@ public class UserEntity {
             nullable = false, 
             updatable = false)
     private LocalDateTime createdAt;
-
-    @OneToMany(orphanRemoval = true,
-               cascade = CascadeType.ALL,
-               mappedBy = "user")
-    @Builder.Default
-    private List<FavoriteEntity> favorites = new ArrayList<>();
-
-    @OneToMany(orphanRemoval = true,
-               cascade = CascadeType.ALL,
-               mappedBy = "user")
-    @Builder.Default
-    private List<ReviewEntity> reviews = new ArrayList<>();
-
 
 }
