@@ -1,6 +1,6 @@
 spring:
   application:
-    name: mini_2
+    name: user-service
 
   # maria db    
   datasource:
@@ -46,7 +46,7 @@ openai:
   url: ${OPEN_AI_URL}
   model: ${OPEN_AI_MODEL}
   
-  eureka:
+eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
