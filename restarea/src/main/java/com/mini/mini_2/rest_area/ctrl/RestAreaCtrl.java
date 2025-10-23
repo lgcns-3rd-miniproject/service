@@ -87,11 +87,29 @@ public class RestAreaCtrl {
         description = "휴게소코드를 입력해주세요."
     )
 
-    @GetMapping("/lists/restarea/{stdRestCd}")
+    @GetMapping("/lists/restarea/code/{stdRestCd}")
     public ResponseEntity<RestAreaResponseDTO> findByStdRestCd(@PathVariable("stdRestCd") String stdRestCd) {
         System.out.println("[RestAreaCtrl] findByCode : "+ stdRestCd);
         
         RestAreaResponseDTO response = restAreaService.findByCode(stdRestCd);
+
+        if (response != null) {
+            return new ResponseEntity<>(response, HttpStatus.OK); 
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND); 
+        }
+    }
+    
+    @Operation(
+        summary = "휴게소 주소 기반 휴게소 목록 조회",
+        description = "휴게소 주소를 입력해주세요."
+    )
+
+    @GetMapping("/lists/restarea/addr/{addr}")
+    public ResponseEntity<RestAreaResponseDTO> findByAddr(@PathVariable("addr") String addr) {
+        System.out.println("[RestAreaCtrl] findByCode : "+ addr);
+        
+        RestAreaResponseDTO response = restAreaService.findByAddress(addr);
 
         if (response != null) {
             return new ResponseEntity<>(response, HttpStatus.OK); 
