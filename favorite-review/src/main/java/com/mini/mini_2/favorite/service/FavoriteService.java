@@ -6,6 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mini.mini_2.client.rest_area.RestAreaClient;
+import com.mini.mini_2.client.rest_area.domain.RestAreaResponseDTO;
+import com.mini.mini_2.client.user.UserClient;
+import com.mini.mini_2.client.user.domain.UserResponseDTO;
 import com.mini.mini_2.favorite.domain.dto.FavoriteRequestDTO;
 import com.mini.mini_2.favorite.domain.dto.FavoriteResponseDTO;
 import com.mini.mini_2.favorite.domain.entity.FavoriteEntity;
@@ -22,20 +26,22 @@ public class FavoriteService {
     private FavoriteRepository favoriteRepository;
     
     @Autowired 
-    private UserRepository userRepository;
+    private UserClient userClient;
     
     @Autowired
-    private RestAreaRepository restAreaRepository;
+    private RestAreaClient restAreaClient;
     
     // 즐겨찾기 생성
     public FavoriteResponseDTO create(FavoriteRequestDTO request) {
         System.out.println("[FavoriteService] create : " +request);
         
-        Optional<UserEntity> userEntity = userRepository.findById(request.getUserId());
-        Optional<RestAreaEntity> restAreaEntity = restAreaRepository.findById(request.getRestAreaId());
+        UserResponseDTO userEntity = userClient.findById(request.getUserId());
+        RestAreaResponseDTO restAreaEntity = restAreaRepository.findById(request.getRestAreaId());
         
+        System.out.println("user client : " + userEntity);
+        System.out.println("restarea client : " + restAreaEntity);
 
-        FavoriteEntity entity = favoriteRepository.save(request.toEntity(userEntity.get(), restAreaEntity.get()));
+        FavoriteEntity entity = favoriteRepository.save(request.toEntity());
         return FavoriteResponseDTO.fromEntity(entity);
     }
     

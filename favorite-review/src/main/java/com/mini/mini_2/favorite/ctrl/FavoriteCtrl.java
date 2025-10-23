@@ -51,6 +51,8 @@ public class FavoriteCtrl {
     public ResponseEntity<Void> create(@RequestBody FavoriteRequestDTO request) {
         System.out.println("[FavoriteCtrl] create : " + request);
         FavoriteResponseDTO response = favoriteService.create(request);
+
+        System.out.println("[FavoriteCtrtl] return value : " + response);
         
         if(response != null) {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
@@ -84,7 +86,7 @@ public class FavoriteCtrl {
     public ResponseEntity<List<FavoriteResponseDTO>> findByUserId(@PathVariable("userId") Integer userId) {
         System.out.println("[FavoriteCtrl] get favorite by user : " + userId);
         
-        List<FavoriteResponseDTO> responses = favoriteService.findByUserId(userId);
+        List<FavoriteResponseDTO> responses = favoriteService.findByUserId(Integer,toString(userId));
         
         if (responses != null) {
             return ResponseEntity.status(HttpStatus.OK).body(responses);

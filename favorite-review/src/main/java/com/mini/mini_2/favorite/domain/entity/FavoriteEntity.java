@@ -36,13 +36,9 @@ public class FavoriteEntity {
     @Column(length = 500)
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY,
-               optional = false)
-    @JoinColumn(name = "user_id")       // 테이블 컬럼 이름
-    private UserEntity user;            // UserEntity 의 mappedBy
+    @Column(length = 100)
+    private String userId;
 
-    @ManyToOne(fetch = FetchType.LAZY,
-               optional = false)
-    @JoinColumn(name = "rest_area_id")       // 테이블 컬럼 이름
-    private RestAreaEntity restArea;         // UserEntity 의 mappedBy
+    @Column(length = 100)
+    private RestAreaEntity restAreaId;         // UserEntity 의 mappedBy
 }
