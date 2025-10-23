@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import com.mini.mini_2.rest_area.domain.dto.RestAreaResponseDTO;
-import com.mini.mini_2.rest_area.service.RestAreaService;
+import com.mini.mini_2.client.rest_area.RestAreaClient;
+import com.mini.mini_2.client.rest_area.domain.RestAreaResponseDTO;
 import com.mini.mini_2.tmapapi.domain.dto.RoutePoiRequestDTO;
 import com.mini.mini_2.tmapapi.domain.dto.RoutePoiResponseDTO;
 import com.mini.mini_2.tmapapi.domain.dto.RoutePoiResponseDTO.Poi;
@@ -22,7 +22,7 @@ public class RoutePoiService {
     private final String appKey;
     
     @Autowired
-    private RestAreaService restAreaService;
+    private RestAreaClient restAreaClient;
 
     public RoutePoiService(WebClient.Builder builder,
                         @Value("${TMAPAPI_KEY}") String appKey,
@@ -48,7 +48,7 @@ public class RoutePoiService {
         for (Poi poi : responses.getSearchPoiInfo().getPois().getPoi()) {
             String addr = poi.getAddr();
             
-            RestAreaResponseDTO restArea = restAreaService.findByAddress(addr);
+            RestAreaResponseDTO restArea = restAreaClient.findByAddress(addr);
             
             // System.out.println("[POI OF ROUTE] rest area : " + restArea);
             
