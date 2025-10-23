@@ -1,41 +1,42 @@
 package com.mini.mini_2.openapi.ctrl;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.mini.mini_2.facility.domain.dto.FacilityRequestDTO;
-import com.mini.mini_2.facility.service.FacilityService;
-import com.mini.mini_2.food.domain.dto.FoodRequestDTO;
-import com.mini.mini_2.food.service.FoodService;
-import com.mini.mini_2.openapi.domain.dto.FacilityApiRequestDTO;
-import com.mini.mini_2.openapi.domain.dto.FacilityApiResponseDTO;
-import com.mini.mini_2.openapi.domain.dto.FoodApiRequestDTO;
-import com.mini.mini_2.openapi.domain.dto.FoodApiResponseDTO;
-import com.mini.mini_2.openapi.domain.dto.RestAreaInfoApiRequestDTO;
-import com.mini.mini_2.openapi.domain.dto.RestAreaInfoApiResponseDTO;
-import com.mini.mini_2.openapi.domain.dto.RestAreaLocationApiRequestDTO;
-import com.mini.mini_2.openapi.domain.dto.RestAreaLocationApiResponseDTO;
-import com.mini.mini_2.openapi.domain.dto.FacilityApiResponseDTO.FacilityDTO;
-import com.mini.mini_2.openapi.domain.dto.FoodApiResponseDTO.FoodDTO;
-import com.mini.mini_2.openapi.domain.dto.RestAreaInfoApiResponseDTO.RestAreaInfoDTO;
-import com.mini.mini_2.openapi.service.FacilityApiService;
-import com.mini.mini_2.openapi.service.FoodApiService;
-import com.mini.mini_2.openapi.service.RestAreaInfoApiService;
-import com.mini.mini_2.openapi.service.RestAreaLocationApiService;
-import com.mini.mini_2.rest_area.domain.dto.RestAreaRequestDTO;
-import com.mini.mini_2.rest_area.domain.dto.RestAreaResponseDTO;
-import com.mini.mini_2.rest_area.service.RestAreaService;
-
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import io.swagger.v3.oas.annotations.tags.Tag;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.mini.mini_2.client.facility.FacilityClient;
+import com.mini.mini_2.client.food.FoodClient;
+import com.mini.mini_2.client.restArea.RestAreaClient;
+
+import com.mini.mini_2.client.food.domain.FoodRequestDTO;
+import com.mini.mini_2.client.facility.domain.FacilityRequestDTO;
+import com.mini.mini_2.client.restArea.domain.RestAreaRequestDTO;
+import com.mini.mini_2.openapi.domain.dto.FacilityApiRequestDTO;
+
+import com.mini.mini_2.client.restArea.domain.RestAreaResponseDTO;
+import com.mini.mini_2.openapi.domain.dto.FacilityApiResponseDTO;
+import com.mini.mini_2.openapi.domain.dto.FacilityApiResponseDTO.FacilityDTO;
+import com.mini.mini_2.openapi.domain.dto.FoodApiRequestDTO;
+import com.mini.mini_2.openapi.domain.dto.FoodApiResponseDTO;
+import com.mini.mini_2.openapi.domain.dto.FoodApiResponseDTO.FoodDTO;
+import com.mini.mini_2.openapi.domain.dto.RestAreaInfoApiRequestDTO;
+import com.mini.mini_2.openapi.domain.dto.RestAreaInfoApiResponseDTO;
+import com.mini.mini_2.openapi.domain.dto.RestAreaInfoApiResponseDTO.RestAreaInfoDTO;
+import com.mini.mini_2.openapi.domain.dto.RestAreaLocationApiRequestDTO;
+import com.mini.mini_2.openapi.domain.dto.RestAreaLocationApiResponseDTO;
+import com.mini.mini_2.openapi.service.FacilityApiService;
+import com.mini.mini_2.openapi.service.FoodApiService;
+import com.mini.mini_2.openapi.service.RestAreaInfoApiService;
+import com.mini.mini_2.openapi.service.RestAreaLocationApiService;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 
 
@@ -53,12 +54,18 @@ public class OpenApiCtrl {
     @Autowired
     public RestAreaInfoApiService restAreaInfoApiService;
     
+    // @Autowired
+    // public RestAreaService restAreaService;
     @Autowired
-    public RestAreaService restAreaService;
+    public RestAreaClient restAreaClient;
+    // @Autowired
+    // public FoodService foodService;
     @Autowired
-    public FoodService foodService;
+    public FoodClient foodClient;
+    // @Autowired
+    // public FacilityService facilityService;
     @Autowired
-    public FacilityService facilityService;
+    public FacilityClient facilityClient;
     
     @Operation(
         summary = "휴게소 정보 업데이트",
