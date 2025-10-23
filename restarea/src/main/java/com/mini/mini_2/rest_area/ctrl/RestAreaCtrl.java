@@ -81,6 +81,24 @@ public class RestAreaCtrl {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND); 
         }
     }
+    
+    @Operation(
+        summary = "휴게소코드 기반 휴게소 목록 조회",
+        description = "휴게소코드를 입력해주세요."
+    )
+
+    @GetMapping("/lists/restarea/{stdRestCd}")
+    public ResponseEntity<RestAreaResponseDTO> findByStdRestCd(@PathVariable("stdRestCd") String stdRestCd) {
+        System.out.println("[RestAreaCtrl] findByCode : "+ stdRestCd);
+        
+        RestAreaResponseDTO response = restAreaService.findByCode(stdRestCd);
+
+        if (response != null) {
+            return new ResponseEntity<>(response, HttpStatus.OK); 
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND); 
+        }
+    }
 
     @Operation(
         summary = "휴게소 정보 수정",
