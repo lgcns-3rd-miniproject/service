@@ -18,7 +18,7 @@ public interface RestAreaClient {
     @GetMapping("/api/v1/mini/restarea/lists/restArea/{restAreaId}")
     RestAreaResponseDTO findById(@PathVariable("restAreaId") Integer restAreaId);
 
-    @GetMapping("/api/v1/mini/restarea/lists/restArea/{stdRestCd}")
+    @GetMapping("/api/v1/mini/restarea/code/{stdRestCd}")
     RestAreaResponseDTO findByCode(@PathVariable("stdRestCd")  String stdRestCd);
 
     @GetMapping("/api/v1/mini/restArea/lists")
