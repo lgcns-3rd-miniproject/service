@@ -2,12 +2,15 @@ package com.mini.mini_2.tmapapi.ctrl;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mini.mini_2.rest_area.domain.dto.RestAreaResponseDTO;
+//import com.mini.mini_2.client.rest_area.domain.RestAreaResponseDTO;
+// import com.mini.mini_2.tmapapi.client.rest_area.domain.RestAreaResponseDTO;
 import com.mini.mini_2.tmapapi.domain.dto.PoiRequestDTO;
 import com.mini.mini_2.tmapapi.domain.dto.PoiResponseDTO;
 import com.mini.mini_2.tmapapi.domain.dto.RoutePoiRequestDTO;
 import com.mini.mini_2.tmapapi.domain.dto.RouteRequestDTO;
 import com.mini.mini_2.tmapapi.domain.dto.RouteResponseDTO;
+
+
 import com.mini.mini_2.tmapapi.service.PoiService;
 import com.mini.mini_2.tmapapi.service.RoutePoiService;
 import com.mini.mini_2.tmapapi.service.RouteService;
@@ -86,11 +89,11 @@ public class TmapApiCtrl {
         }
     )
     @PostMapping("poi_of_route")
-    public ResponseEntity<List<RestAreaResponseDTO>> poi_of_route(@RequestBody RoutePoiRequestDTO request) {
+    public ResponseEntity<List<com.mini.mini_2.client.rest_area.domain.RestAreaResponseDTO>> poi_of_route(@RequestBody RoutePoiRequestDTO request) {
         System.out.println("[TMAP POI OF ROUTE] request ");
         // System.out.println("[TMAP POI OF ROUTE] request : " + request);
         
-        List<RestAreaResponseDTO> responses = routePoiService.poiOfRoute(request);
+        List<com.mini.mini_2.client.rest_area.domain.RestAreaResponseDTO> responses = routePoiService.poiOfRoute(request);
         
         // System.out.println("[TMAP POI OF ROUTE] result : " + responses);
         
