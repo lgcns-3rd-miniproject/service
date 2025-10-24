@@ -74,6 +74,7 @@ public class OpenApiCtrl {
     @GetMapping("restarea_update")
     public ResponseEntity<Void> restarea_update(@ModelAttribute RestAreaInfoApiRequestDTO request) {
         RestAreaInfoApiResponseDTO responses = restAreaInfoApiService.info(request);
+        System.out.println("[UPDATE TEST] response : " + responses);
         System.out.println("[UPDATE TEST] request : " + responses.getCount());
         
         for (RestAreaInfoDTO restarea : responses.getList()) {
