@@ -1,22 +1,30 @@
-package com.mini.mini_2.client.restArea;
+package com.mini.mini_2.client.restarea;
 
 import java.util.List;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
-import com.mini.mini_2.client.restArea.domain.RestAreaResponseDTO;
-
+import com.mini.mini_2.client.restarea.domain.RestAreaRequestDTO;
+import com.mini.mini_2.client.restarea.domain.RestAreaResponseDTO;
 
 @FeignClient(
     name = "restArea-service", 
-    url = "${RESTAREA_SERVICE_URL:http://localhost:8888}"
+    url = "${GATEWAY_URL:http://service-restArea-1:8080}"
 )
 public interface RestAreaClient {
     @GetMapping("/api/v1/mini/restarea/lists/restArea/{restAreaId}")
     RestAreaResponseDTO findById(@PathVariable("restAreaId") Integer restAreaId);
 
+    @GetMapping("/api/v1/mini/restarea/code/{stdRestCd}")
+    RestAreaResponseDTO findByCode(@PathVariable("stdRestCd")  String stdRestCd);
+
     @GetMapping("/api/v1/mini/restArea/lists")
     List<RestAreaResponseDTO> findAll();
+
+    @PostMapping("/api/v1/mini/restArea/create")
+    RestAreaResponseDTO create(RestAreaRequestDTO restAreaRequestDTO);
+
 }

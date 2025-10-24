@@ -10,14 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mini.mini_2.client.facility.FacilityClient;
 import com.mini.mini_2.client.food.FoodClient;
-import com.mini.mini_2.client.restArea.RestAreaClient;
-
 import com.mini.mini_2.client.food.domain.FoodRequestDTO;
+import com.mini.mini_2.client.restarea.RestAreaClient;
+import com.mini.mini_2.client.restarea.domain.RestAreaRequestDTO;
+import com.mini.mini_2.client.restarea.domain.RestAreaResponseDTO;
 import com.mini.mini_2.client.facility.domain.FacilityRequestDTO;
-import com.mini.mini_2.client.restArea.domain.RestAreaRequestDTO;
 import com.mini.mini_2.openapi.domain.dto.FacilityApiRequestDTO;
-
-import com.mini.mini_2.client.restArea.domain.RestAreaResponseDTO;
 import com.mini.mini_2.openapi.domain.dto.FacilityApiResponseDTO;
 import com.mini.mini_2.openapi.domain.dto.FacilityApiResponseDTO.FacilityDTO;
 import com.mini.mini_2.openapi.domain.dto.FoodApiRequestDTO;
@@ -53,17 +51,11 @@ public class OpenApiCtrl {
     private FacilityApiService facilityApiService;
     @Autowired
     public RestAreaInfoApiService restAreaInfoApiService;
-    
-    // @Autowired
-    // public RestAreaService restAreaService;
+
     @Autowired
     public RestAreaClient restAreaClient;
-    // @Autowired
-    // public FoodService foodService;
     @Autowired
     public FoodClient foodClient;
-    // @Autowired
-    // public FacilityService facilityService;
     @Autowired
     public FacilityClient facilityClient;
     
@@ -122,7 +114,7 @@ public class OpenApiCtrl {
                     .xValue(xValue)
                     .yValue(yValue)
                     .build();
-            restAreaService.create(restAreaRequest);
+            restAreaClient.create(restAreaRequest);
         }      
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
@@ -145,7 +137,7 @@ public class OpenApiCtrl {
         for (FoodDTO food : responses.getList()) {
             System.out.println("[DEBUG] food.getStdRestCd -> " + food.getStdRestCd());
             System.out.println("[DEBUG] food.getStdRestCd length -> " + food.getStdRestCd().length());
-            RestAreaResponseDTO restarea = restAreaService.findByCode(food.getStdRestCd());
+            RestAreaResponseDTO restarea = restAreaClient.findByCode(food.getStdRestCd());
             
             if (restarea == null) continue;
             
@@ -157,7 +149,7 @@ public class OpenApiCtrl {
                                                        .restAreaId(restarea.getRestAreaId())
                                                        .build();
             System.out.println("[FOOD] : " + foodRequest);
-            foodService.create(foodRequest);
+            foodClient.create(foodRequest);
         }
         
         return ResponseEntity.status(HttpStatus.OK).body(null);
@@ -181,7 +173,7 @@ public class OpenApiCtrl {
         for (FacilityDTO facility : responses.getList()) {
             System.out.println("[DEBUG] facility.getStdRestCd -> " + facility.getStdRestCd());
             System.out.println("[DEBUG] facility.getStdRestCd length -> " + facility.getStdRestCd().length());
-            RestAreaResponseDTO restarea = restAreaService.findByCode(facility.getStdRestCd());
+            RestAreaResponseDTO restarea = restAreaClient.findByCode(facility.getStdRestCd());
             
             if(restarea == null) continue;
             
@@ -191,7 +183,7 @@ public class OpenApiCtrl {
                                                                    .restAreaId(restarea.getRestAreaId())
                                                                    .build();
             System.out.println("[FACILITY] : " + facilityRequest);
-            facilityService.create(facilityRequest);
+            facilityClient.create(facilityRequest);
         }
         
         return ResponseEntity.status(HttpStatus.OK).body(null);
