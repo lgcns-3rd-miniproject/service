@@ -8,7 +8,7 @@ import com.mini.mini_2.client.user.domain.UserResponseDTO;
 
 @FeignClient(
     name = "user-service", 
-    url = "${USER_SERVICE_URL:http://localhost:8888}"
+    url = "${GATEWAY_URL:http://service-user-1:8080}"
 )
 public interface UserClient {
     
