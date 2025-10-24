@@ -15,6 +15,6 @@
 5. eureka (지민우)
    - [도커허브](https://hub.docker.com/r/jiminu/eureka-serv) [0.1.0-amd]
 6. tmapapi (이현진)
-   - [도커허브](https://hub.docker.com/repositories/lhj1211) [0.0.2-amd]
+   - [도커허브](https://hub.docker.com/repositories/lhj1211) [0.0.3-amd]
 7. restarea-unit (food-facility) (조성민)
    - [도커허브](https://hub.docker.com/repository/docker/seongmincho/mp3-restarea-unit/) [0.1.0-amd]
