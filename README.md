@@ -20,3 +20,5 @@
    - [도커허브](https://hub.docker.com/repository/docker/seongmincho/mp3-restarea-unit/) [0.1.0-amd]
 8. content (favorite-review) (정영호)
  - [도커허브](https://hub.docker.com/repository/docker/startingfindmistake/mp3-service-content/general/) [0.1.0]
+9. openai (하지현)
+   - [도커허브](https://hub.docker.com/repository/docker/j2hxxxx/mp3-service-openai/general) [0.1.0-amd]
