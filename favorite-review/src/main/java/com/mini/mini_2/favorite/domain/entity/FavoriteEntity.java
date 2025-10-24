@@ -1,16 +1,11 @@
 package com.mini.mini_2.favorite.domain.entity;
 
-import com.mini.mini_2.rest_area.domain.entity.RestAreaEntity;
-import com.mini.mini_2.user.domain.entity.UserEntity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,9 +19,9 @@ import lombok.ToString;
 @Builder
 @Setter
 @Getter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = {"restArea"})
 public class FavoriteEntity {
     
     @Id
@@ -35,14 +30,10 @@ public class FavoriteEntity {
     
     @Column(length = 500)
     private String description;
-
-    @ManyToOne(fetch = FetchType.LAZY,
-               optional = false)
-    @JoinColumn(name = "user_id")       // 테이블 컬럼 이름
-    private UserEntity user;            // UserEntity 의 mappedBy
-
-    @ManyToOne(fetch = FetchType.LAZY,
-               optional = false)
-    @JoinColumn(name = "rest_area_id")       // 테이블 컬럼 이름
-    private RestAreaEntity restArea;         // UserEntity 의 mappedBy
+    
+    @Column(length = 100)
+    private String userId;
+    
+    @Column(length = 100)
+    private String restAreaId;  
 }

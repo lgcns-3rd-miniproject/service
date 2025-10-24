@@ -1,6 +1,4 @@
-package com.mini.mini_2.openai.domain.dto;
-
-import java.util.List;
+package com.mini.mini_2.client.user.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,7 +13,9 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class ChatRequestDTO {
-    private String userRequest;
-    private List<String> restareaCodes; 
+public class UserResponseDTO {
+    private Integer userId;
+    private String password;
+    private String userEmail;
+    private String userNickname;
 }

@@ -26,8 +26,8 @@ public class FavoriteResponseDTO {
     public static FavoriteResponseDTO fromEntity(FavoriteEntity entity) {
         return FavoriteResponseDTO.builder()
                                   .favoriteId(entity.getFavoriteId())
-                                  .userId(entity.getUser().getUserId())
-                                  .restAreaId(entity.getRestArea().getRestAreaId())
+                                  .userId(Integer.parseInt(entity.getUserId()))
+                                  .restAreaId(Integer.parseInt(entity.getRestAreaId()))
                                   .description(entity.getDescription())
                                   .build();
     }

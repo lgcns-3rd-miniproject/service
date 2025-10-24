@@ -6,14 +6,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mini.mini_2.rest_area.domain.entity.RestAreaEntity;
-import com.mini.mini_2.rest_area.repository.RestAreaRepository;
+import com.mini.mini_2.client.rest_area.RestAreaClient;
+import com.mini.mini_2.client.rest_area.domain.RestAreaResponseDTO;
+import com.mini.mini_2.client.user.UserClient;
+import com.mini.mini_2.client.user.domain.UserResponseDTO;
 import com.mini.mini_2.review.domain.dto.ReviewRequestDTO;
 import com.mini.mini_2.review.domain.dto.ReviewResponseDTO;
 import com.mini.mini_2.review.domain.entity.ReviewEntity;
 import com.mini.mini_2.review.repository.ReviewRepository;
-import com.mini.mini_2.user.domain.entity.UserEntity;
-import com.mini.mini_2.user.repository.UserRepository;
 
 @Service
 public class ReviewService {
@@ -22,20 +22,22 @@ public class ReviewService {
     private ReviewRepository reviewRepository;
     
     @Autowired 
-    private UserRepository userRepository;
+    private UserClient userClient;
     
     @Autowired
-    private RestAreaRepository restAreaRepository;
+    private RestAreaClient restAreaRepository;
     
     // 리뷰 작성
     public ReviewResponseDTO create(ReviewRequestDTO request) {
         System.out.println("[ReviewService] create : "+ request);
         
-        Optional<UserEntity> userEntity = userRepository.findById(request.getUserId());
-        Optional<RestAreaEntity> restAreaEntity = restAreaRepository.findById(request.getRestAreaId());
+        // UserResponseDTO userEntity = userClient.findById(request.getUserId());
+        // RestAreaResponseDTO restAreaEntity = restAreaRepository.findById(request.getRestAreaId());
         
+        // System.out.println("user client : " + userEntity);
+        // System.out.println("restarea client : " + restAreaEntity);
 
-        ReviewEntity entity = reviewRepository.save(request.toEntity(userEntity.get(), restAreaEntity.get()));
+        ReviewEntity entity = reviewRepository.save(request.toEntity());
         return ReviewResponseDTO.fromEntity(entity);
     }
 
@@ -43,10 +45,10 @@ public class ReviewService {
     public List<ReviewResponseDTO> findByRestAreaId(Integer restAreaId, String sort) {
         System.out.println("[RestAreaService] findByRestAreaId : "+ restAreaId);
         System.out.println("[RestAreaService] sort : "+ sort);
-        List<ReviewEntity> responses =
+        List<ReviewEntity> responses = 
                 ("평점순".equalsIgnoreCase(sort))
-                        ? reviewRepository.findByRestArea_RestAreaIdOrderByRatingDesc(restAreaId)     
-                        : reviewRepository.findByRestArea_RestAreaIdOrderByCreatedAtDesc(restAreaId);
+                        ? reviewRepository.findByRestAreaIdOrderByRatingDesc(restAreaId)     
+                        : reviewRepository.findByRestAreaIdOrderByCreatedAtDesc(restAreaId);
         return responses.stream()
                         .map(ReviewResponseDTO::fromEntity)
                         .toList();
@@ -55,7 +57,7 @@ public class ReviewService {
     // ID 기반 휴게소 단건 조회
     public List<ReviewResponseDTO> findByUserId(Integer userId) {
 
-        List<ReviewEntity> responses = reviewRepository.findByUser_UserId(userId);
+        List<ReviewEntity> responses = reviewRepository.findByUserId(userId);
 
         return responses.stream()
                 .map(entity -> ReviewResponseDTO.fromEntity(entity))
