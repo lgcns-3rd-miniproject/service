@@ -15,7 +15,7 @@ import com.mini.mini_2.client.restarea.domain.RestAreaResponseDTO;
     url = "${GATEWAY_URL:http://service-restarea-1:8080}"
 )
 public interface RestAreaClient {
-    @GetMapping("/api/v1/mini/restarea/lists/restArea/{restAreaId}")
+    @GetMapping("/api/v1/mini/restarea/lists/restarea/{restAreaId}")
     RestAreaResponseDTO findById(@PathVariable("restAreaId") Integer restAreaId);
 
     @GetMapping("/api/v1/mini/restarea/code/{stdRestCd}")
