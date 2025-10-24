@@ -78,7 +78,7 @@ tasks.named('test') {
 }
 
 tasks.named('bootJar') {
-    archiveFileName = "food-facility.jar" 
+    archiveFileName = "restarea-unit-0.1.0-amd.jar" 
 }
 
 tasks.named('jar') {

@@ -1,6 +1,6 @@
 spring:
     application:
-        name: food-facility
+        name: restarea-unit
 
     # maria db
     datasource:
