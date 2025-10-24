@@ -9,8 +9,7 @@ import com.mini.mini_2.client.facility.domain.FacilityResponseDTO;
 
 
 @FeignClient(
-    name = "restarea-unit-service", 
-    url = "${GATEWAY_URL:http://service-restarea-unit-1:8080}"
+    name = "restarea-unit-service"
 )
 
 public interface FacilityClient {
