@@ -63,7 +63,7 @@ public class ChatService {
             .toList();
 
     //ra: restarea, f:food
-Map<String, List<String>> foodNames = restAreas.stream()
+    Map<String, List<String>> foodNames = restAreas.stream()
     .collect(Collectors.toMap(
         RestAreaResponseDTO::getName, // 휴게소 이름
         ra -> foodClient.searchByRestAreaId(ra.getRestAreaId()).stream() // 대표메뉴만 조회

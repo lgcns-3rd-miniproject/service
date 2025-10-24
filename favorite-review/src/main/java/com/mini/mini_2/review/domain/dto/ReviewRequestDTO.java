@@ -1,8 +1,7 @@
 package com.mini.mini_2.review.domain.dto;
 
-import com.mini.mini_2.rest_area.domain.entity.RestAreaEntity;
 import com.mini.mini_2.review.domain.entity.ReviewEntity;
-import com.mini.mini_2.user.domain.entity.UserEntity;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,7 +11,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Builder
-@Setter
+@Setter     // Controller에서 userId를 주입하기 위해 필요
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,10 +23,10 @@ public class ReviewRequestDTO {
     private String rating;
     private String comment;
     
-    public ReviewEntity toEntity(UserEntity userEntity, RestAreaEntity restAreaEntity) {
+    public ReviewEntity toEntity() {
         return ReviewEntity.builder()
-                         .user(userEntity)
-                         .restArea(restAreaEntity)
+                         .userId(this.userId) // DTO의 ID 필드 사용
+                         .restAreaId(this.restAreaId) // DTO의 ID 필드 사용
                          .rating(this.rating)
                          .comment(this.comment)
                          .build();

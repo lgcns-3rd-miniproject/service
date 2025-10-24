@@ -1,6 +1,6 @@
 spring:
   application:
-    name: mini_2
+    name: content-service
 
   # maria db    
   datasource:
@@ -10,9 +10,9 @@ spring:
     password: ${SPRING_PASSWORD}
     hikari:
       # 15분
-      max-lifetime: 1500000   
+      max-lifetime: 1500000
       # 10
-      idle-timeout: 600000 
+      idle-timeout: 600000
   
   jpa:
     hibernate:
@@ -34,7 +34,7 @@ spring:
       port: ${REDIS_PORT}
       
 server:
-  port: ${SPRING_PORT}
+  port: ${SPRING_PORT:8080}
   
 jwt:
   secret: ${JWT_SECRET_KEY}
@@ -45,3 +45,11 @@ openai:
   api-key: ${OPEN_AI_KEY}
   url: ${OPEN_AI_URL}
   model: ${OPEN_AI_MODEL}
+
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8765/eureka/}

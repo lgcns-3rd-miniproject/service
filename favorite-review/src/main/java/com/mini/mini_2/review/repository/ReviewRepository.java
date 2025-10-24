@@ -13,11 +13,11 @@ import com.mini.mini_2.review.domain.entity.ReviewEntity;
 public interface ReviewRepository extends JpaRepository<ReviewEntity, Integer> {
     
     // 기본 조회
-    List<ReviewEntity> findByRestArea_RestAreaId(Integer restAreaId);
-    List<ReviewEntity> findByUser_UserId(Integer userId);
+    List<ReviewEntity> findByRestAreaId(Integer restAreaId);
+    List<ReviewEntity> findByUserId(Integer userId);
 
     // 최신순(정렬)
-    List<ReviewEntity> findByRestArea_RestAreaIdOrderByCreatedAtDesc(Integer restAreaId);
+    List<ReviewEntity> findByRestAreaIdOrderByCreatedAtDesc(Integer restAreaId);
     // 평점순(정렬)
-    List<ReviewEntity> findByRestArea_RestAreaIdOrderByRatingDesc(Integer restAreaId);
+    List<ReviewEntity> findByRestAreaIdOrderByRatingDesc(Integer restAreaId);
 }
