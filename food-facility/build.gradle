@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.mini'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
 description = 'Demo project for Spring Boot'
 
 java {
@@ -75,4 +75,12 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+tasks.named('bootJar') {
+    archiveFileName = "food-facility.jar" 
+}
+
+tasks.named('jar') {
+    enabled = false
 }
