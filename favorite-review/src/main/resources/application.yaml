@@ -10,9 +10,9 @@ spring:
     password: ${SPRING_PASSWORD}
     hikari:
       # 15분
-      max-lifetime: 1500000   
+      max-lifetime: 1500000
       # 10
-      idle-timeout: 600000 
+      idle-timeout: 600000
   
   jpa:
     hibernate:
