@@ -19,4 +19,4 @@
 7. restarea-unit (food-facility) (조성민)
    - [도커허브](https://hub.docker.com/repository/docker/seongmincho/mp3-restarea-unit/) [0.1.0-amd]
 8. content (favorite-review) (정영호)
-9. - [도커허브](https://hub.docker.com/repository/docker/startingfindmistake/mp3-service-content/general/) [0.1.0]
+ - [도커허브](https://hub.docker.com/repository/docker/startingfindmistake/mp3-service-content/general/) [0.1.0]
