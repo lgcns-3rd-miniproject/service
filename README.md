@@ -5,9 +5,9 @@
 ## docker image list
 ### 도커 이미지 업데이트 후 최신 버전으로 표기할 것
 1. user (지민우)
-   - [도커허브](https://hub.docker.com/r/jiminu/mp3-service-user) [0.1.3-amd]
+   - [도커허브](https://hub.docker.com/r/jiminu/mp3-service-user) [0.1.4-amd]
 2. restarea (지민우)
-   - [도커허브](https://hub.docker.com/r/jiminu/mp3-service-restarea) [0.1.1-amd]
+   - [도커허브](https://hub.docker.com/r/jiminu/mp3-service-restarea) [0.2.0-amd]
 3. openapi (장준희)
    - [도커허브](https://hub.docker.com/r/wnsgml/mp3-service-openapi) [0.0.6]
 4. gateway (지민우)
