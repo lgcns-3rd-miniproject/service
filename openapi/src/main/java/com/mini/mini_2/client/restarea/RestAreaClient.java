@@ -11,8 +11,7 @@ import com.mini.mini_2.client.restarea.domain.RestAreaRequestDTO;
 import com.mini.mini_2.client.restarea.domain.RestAreaResponseDTO;
 
 @FeignClient(
-    name = "restarea-service", 
-    url = "${GATEWAY_URL:http://service-restarea-1:8080}"
+    name = "restarea-service"
 )
 public interface RestAreaClient {
     @GetMapping("/api/v1/mini/restarea/lists/restarea/{restAreaId}")

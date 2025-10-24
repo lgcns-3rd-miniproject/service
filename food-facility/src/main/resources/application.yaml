@@ -1,6 +1,6 @@
 spring:
     application:
-        name: restarea-unit
+        name: restarea-unit-service
 
     # maria db
     datasource:

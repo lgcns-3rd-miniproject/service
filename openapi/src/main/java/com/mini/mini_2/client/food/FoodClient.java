@@ -12,8 +12,7 @@ import com.mini.mini_2.client.food.domain.FoodResponseDTO;
 
 
 @FeignClient(
-    name = "restarea-unit-service", 
-    url = "${GATEWAY_URL:http://service-restarea-unit-1:8080}"
+    name = "restarea-unit-service"
 )
 public interface FoodClient {
     
