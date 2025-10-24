@@ -17,7 +17,7 @@
 6. tmapapi (이현진)
    - [도커허브](https://hub.docker.com/repositories/lhj1211) [0.0.3-amd]
 7. restarea-unit (food-facility) (조성민)
-   - [도커허브](https://hub.docker.com/repository/docker/seongmincho/mp3-restarea-unit/) [0.1.0-amd]
+   - [도커허브](https://hub.docker.com/repository/docker/seongmincho/mp3-service-restarea-unit/tags) [0.1.1-amd]
 8. content (favorite-review) (정영호)
    - [도커허브](https://hub.docker.com/repository/docker/startingfindmistake/mp3-service-content/general/) [0.1.0]
 9. openai (하지현)
