@@ -12,11 +12,14 @@ import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mini.mini_2.food.domain.entity.FoodEntity;
+import com.mini.mini_2.client.food.FoodClient;
+import com.mini.mini_2.client.food.domain.FoodResponseDTO;
+import com.mini.mini_2.client.restarea.RestAreaClient;
 import com.mini.mini_2.openai.domain.dto.ChatRequestDTO;
 import com.mini.mini_2.openai.domain.dto.ChatResponseDTO;
-import com.mini.mini_2.rest_area.domain.entity.RestAreaEntity;
-import com.mini.mini_2.rest_area.repository.RestAreaRepository;
+import com.mini.mini_2.client.restarea.domain.RestAreaResponseDTO;
+
+
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -36,16 +39,18 @@ public class ChatService {
 
     private final OkHttpClient client = new OkHttpClient();
     private final ObjectMapper mapper = new ObjectMapper();
-    private final RestAreaRepository restAreaRepository;
+    private final RestAreaClient restAreaClient;
+    private final FoodClient foodClient;
 
-    public ChatService(RestAreaRepository restAreaRepository) {
-        this.restAreaRepository = restAreaRepository;
+    public ChatService(RestAreaClient restAreaClient, FoodClient foodClient) {
+        this.restAreaClient = restAreaClient;
+        this.foodClient = foodClient;
     }
 
     public ChatResponseDTO recommend(ChatRequestDTO request) {
     System.out.println(">>> service recommend");
-
-    List<RestAreaEntity> restAreas = restAreaRepository.findAll().stream()
+    
+    List<RestAreaResponseDTO> restAreas = restAreaClient.findAll().stream()
             .filter(r -> request.getRestareaCodes().contains(r.getCode()))
             .toList();
 
@@ -54,17 +59,18 @@ public class ChatService {
     }
 
     List<String> restAreaNames = restAreas.stream()
-            .map(RestAreaEntity::getName)
+            .map(RestAreaResponseDTO::getName)
             .toList();
 
-    Map<String, List<String>> foodNames = restAreas.stream()
-        .collect(Collectors.toMap(
-                RestAreaEntity::getName,     
-                f -> f.getFoods().stream()
-                        .map(FoodEntity::getFoodName)
-                        .toList()
-        ));
-    
+    //ra: restarea, f:food
+Map<String, List<String>> foodNames = restAreas.stream()
+    .collect(Collectors.toMap(
+        RestAreaResponseDTO::getName, // 휴게소 이름
+        ra -> foodClient.searchByRestAreaId(ra.getRestAreaId()).stream() // 대표메뉴만 조회
+                .map(FoodResponseDTO::getFoodName) // 음식 이름만 추출
+                .toList()
+    ));
+
     System.out.println(">>> service recommend request : " + request);
     String prompt = """
         너는 휴게소 추천 전문가 AI야.

@@ -1,6 +1,6 @@
 spring:
   application:
-    name: mini_2
+    name: openai-service
 
   # maria db    
   datasource:
@@ -27,21 +27,18 @@ spring:
         format_sql: true
   config:
     import: optional:file:.env[.properties]
-    
-  data:
-    redis:
-      host: ${REDIS_HOST}
-      port: ${REDIS_PORT}
       
 server:
-  port: ${SPRING_PORT}
-  
-jwt:
-  secret: ${JWT_SECRET_KEY}
-  access-ttl-ms: ${JWT_ACCESS_TTL_MS}
-  refresh-ttl-ms: ${JWT_REFRESH_TTL_MS}
+  port: 8080
 
 openai:
   api-key: ${OPEN_AI_KEY}
   url: ${OPEN_AI_URL}
   model: ${OPEN_AI_MODEL}
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8765/eureka/}
