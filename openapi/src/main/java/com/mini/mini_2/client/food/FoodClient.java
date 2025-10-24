@@ -12,7 +12,7 @@ import com.mini.mini_2.client.food.domain.FoodResponseDTO;
 
 
 @FeignClient(
-    name = "restarea-unit-service"
+    name = "food-service"
 )
 public interface FoodClient {
     
