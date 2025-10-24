@@ -1,7 +1,6 @@
 package com.mini.mini_2.favorite.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,10 +13,6 @@ import com.mini.mini_2.favorite.domain.dto.FavoriteRequestDTO;
 import com.mini.mini_2.favorite.domain.dto.FavoriteResponseDTO;
 import com.mini.mini_2.favorite.domain.entity.FavoriteEntity;
 import com.mini.mini_2.favorite.repository.FavoriteRepository;
-import com.mini.mini_2.rest_area.domain.entity.RestAreaEntity;
-import com.mini.mini_2.rest_area.repository.RestAreaRepository;
-import com.mini.mini_2.user.domain.entity.UserEntity;
-import com.mini.mini_2.user.repository.UserRepository;
 
 @Service
 public class FavoriteService {
@@ -36,11 +31,11 @@ public class FavoriteService {
         System.out.println("[FavoriteService] create : " +request);
         
         UserResponseDTO userEntity = userClient.findById(request.getUserId());
-        RestAreaResponseDTO restAreaEntity = restAreaRepository.findById(request.getRestAreaId());
+        RestAreaResponseDTO restAreaEntity = restAreaClient.findById(request.getRestAreaId());
         
         System.out.println("user client : " + userEntity);
         System.out.println("restarea client : " + restAreaEntity);
-
+        
         FavoriteEntity entity = favoriteRepository.save(request.toEntity());
         return FavoriteResponseDTO.fromEntity(entity);
     }
@@ -54,10 +49,10 @@ public class FavoriteService {
     }
 
     // ID 기반 즐겨찾기 단건 조회
-    public List<FavoriteResponseDTO> findByUserId(Integer userId) {
+    public List<FavoriteResponseDTO> findByUserId(String userId) {
         System.out.println("[FavoriteService] findByUserId : "+ userId);
 
-        List<FavoriteEntity> entities = favoriteRepository.findAllByUser_UserId(userId);
+        List<FavoriteEntity> entities = favoriteRepository.findAllByUserId(userId);
         
         return entities.stream()
                        .map(entity -> FavoriteResponseDTO.fromEntity(entity))

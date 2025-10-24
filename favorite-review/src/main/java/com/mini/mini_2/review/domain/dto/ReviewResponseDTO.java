@@ -27,8 +27,8 @@ public class ReviewResponseDTO {
     public static ReviewResponseDTO fromEntity(ReviewEntity entity) {
         return ReviewResponseDTO.builder()
                                 .reviewId(entity.getReviewId())
-                                .userId(entity.getUser().getUserId())
-                                .restAreaId(entity.getRestArea().getRestAreaId())
+                                .userId(entity.getUserId())     // 엔티티에서 직접 ID 접근
+                                .restAreaId(entity.getRestAreaId()) // 엔티티에서 직접 ID 접근
                                 .rating(entity.getRating())
                                 .comment(entity.getComment())
                                 .build();

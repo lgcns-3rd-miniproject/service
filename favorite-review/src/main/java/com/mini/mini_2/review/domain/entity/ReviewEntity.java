@@ -5,8 +5,8 @@ import java.time.LocalDateTime;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.mini.mini_2.rest_area.domain.entity.RestAreaEntity;
-import com.mini.mini_2.user.domain.entity.UserEntity;
+//import com.mini.mini_2.rest_area.domain.entity.RestAreaEntity;
+//import com.mini.mini_2.user.domain.entity.UserEntity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -32,27 +32,22 @@ import lombok.ToString;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = {"restArea"})
+@ToString
 public class ReviewEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer reviewId;
 
-    @ManyToOne(fetch = FetchType.LAZY,
-               optional = false)
-    @JoinColumn(name = "user_id")       // 테이블 컬럼 이름
-    private UserEntity user;            // UserEntity 의 mappedBy
+    @Column(name = "user_id", nullable = false)
+    private Integer userId;            // User의 ID만 저장
     
-    @ManyToOne(fetch = FetchType.LAZY,
-               optional = false)
-    @JoinColumn(name = "rest_area_id")       // 테이블 컬럼 이름
-    private RestAreaEntity restArea;         // UserEntity 의 mappedBy
+    @Column(name = "rest_area_id", nullable = false)
+    private Integer restAreaId;        // RestArea의 id만 저장
     
     @Column(nullable = false)               
     private String rating;
     
-    @Column(nullable = false, 
-            length = 1000)
+    @Column(nullable = false, length = 1000)
     private String comment;
     
     
@@ -64,3 +59,4 @@ public class ReviewEntity {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 }
+
