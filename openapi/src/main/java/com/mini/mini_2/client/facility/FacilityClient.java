@@ -9,7 +9,7 @@ import com.mini.mini_2.client.facility.domain.FacilityResponseDTO;
 
 
 @FeignClient(
-    name = "facility-service "
+    name = "facility-service"
 )
 
 public interface FacilityClient {
