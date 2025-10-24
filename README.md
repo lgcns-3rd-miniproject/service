@@ -22,3 +22,17 @@
    - [도커허브](https://hub.docker.com/repository/docker/startingfindmistake/mp3-service-content/general/) [0.1.0]
 9. openai (하지현)
    - [도커허브](https://hub.docker.com/repository/docker/j2hxxxx/mp3-service-openai/general) [0.1.0-amd]
+
+
+# port 번호
+|port|service|
+|--|--|
+|8081|user|
+|8082|restarea|
+|8083|restarea-unit (food-facility)|
+|8084|content (favorite-review)|
+|8085|openapi|
+|8086|tmapapi|
+|8087|openai|
+|8765|eureka|
+|9000|spring gateway|
