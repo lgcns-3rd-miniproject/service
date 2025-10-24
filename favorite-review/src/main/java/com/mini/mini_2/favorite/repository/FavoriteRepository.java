@@ -9,5 +9,5 @@ import com.mini.mini_2.favorite.domain.entity.FavoriteEntity;
 
 @Repository
 public interface FavoriteRepository extends JpaRepository<FavoriteEntity, Integer> {
-    List<FavoriteEntity> findAllByUser_UserId(Integer userId);
+    List<FavoriteEntity> findAllByUserId(String userId);
 }

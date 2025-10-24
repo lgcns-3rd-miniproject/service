@@ -1,8 +1,6 @@
 package com.mini.mini_2.favorite.domain.dto;
 
 import com.mini.mini_2.favorite.domain.entity.FavoriteEntity;
-import com.mini.mini_2.rest_area.domain.entity.RestAreaEntity;
-import com.mini.mini_2.user.domain.entity.UserEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,10 +21,10 @@ public class FavoriteRequestDTO {
     
     private String description;
     
-    public FavoriteEntity toEntity(UserEntity userEntity, RestAreaEntity restAreaEntity) {
+    public FavoriteEntity toEntity() {
         return FavoriteEntity.builder()
-                             .user(userEntity)
-                             .restArea(restAreaEntity)
+                             .userId(Integer.toString(this.userId))
+                             .restAreaId(Integer.toString(this.restAreaId))
                              .description(this.description)
                              .build();
     }
