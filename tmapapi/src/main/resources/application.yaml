@@ -1,6 +1,6 @@
 spring:
   application:
-    name: openapi-service
+    name: tmapapi-service
 
   # maria db
   datasource:

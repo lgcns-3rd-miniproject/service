@@ -11,17 +11,17 @@ import com.mini.mini_2.client.rest_area.domain.RestAreaResponseDTO;
 
 @FeignClient(
     name = "restarea-service", 
-    url = "${RESTAREA_SERVICE_URL:http://localhost:8086}"
+    url = "${GATEWAY_URL:http://service-restarea-1:8080}"
 )
 public interface RestAreaClient {
 
     @GetMapping("/api/v1/mini/restarea/lists/restarea/{restAreaId}")
     RestAreaResponseDTO findById(@PathVariable("restAreaId") Integer restAreaId);
 
-    @GetMapping("/api/v1/mini/restarea/lists/restarea/{addr}")
+    @GetMapping("/api/v1/mini/restarea/lists/restarea/addr/{addr}")
     RestAreaResponseDTO findByAddress(@PathVariable("addr") String addr);
 
-    @GetMapping("/lists/restarea/addr/{addr}")
+    @GetMapping("/lists")
     List<RestAreaResponseDTO> findAll();
     
 }
