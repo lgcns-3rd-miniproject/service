@@ -16,3 +16,5 @@
    - [도커허브](https://hub.docker.com/repositories/lhj1211)
 7. food-facility (조성민)
    - [도커허브](https://hub.docker.com/repository/docker/seongmincho/mp3-food-facility/)
+8. openai (하지현)
+   - [도커허브](https://hub.docker.com/repository/docker/j2hxxxx/mp3-service-openai/) (0.3.0-amd)
