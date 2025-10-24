@@ -12,7 +12,7 @@ import com.mini.mini_2.client.restarea.domain.RestAreaResponseDTO;
 
 @FeignClient(
     name = "restArea-service", 
-    url = "${RESTAREA_SERVICE_URL:http://localhost:8080}"
+    url = "${GATEWAY_URL:http://service-restArea-1:8080}"
 )
 public interface RestAreaClient {
     @GetMapping("/api/v1/mini/restarea/lists/restArea/{restAreaId}")

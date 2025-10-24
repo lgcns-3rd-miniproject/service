@@ -14,7 +14,7 @@ import com.mini.mini_2.client.food.domain.FoodResponseDTO;
 
 @FeignClient(
     name = "food-service", 
-    url = "${FOOD_SERVICE_URL:http://localhost:8080}"
+    url = "${GATEWAY_URL:http://service-food-1:8080}"
 )
 public interface FoodClient {
     @GetMapping("/api/v1/mini/restarea/lists/food/{foodId}")
