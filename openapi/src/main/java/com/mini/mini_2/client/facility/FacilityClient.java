@@ -13,7 +13,7 @@ import com.mini.mini_2.client.facility.domain.FacilityResponseDTO;
 
 @FeignClient(
     name = "facility-service", 
-    url = "${FOOD_SERVICE_URL:http://localhost:8080}"
+    url = "${GATEWAY:http://localhost:8080}"
 )
 
 public interface FacilityClient {
