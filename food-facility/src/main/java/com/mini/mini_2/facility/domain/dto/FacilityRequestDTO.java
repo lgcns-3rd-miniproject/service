@@ -1,7 +1,7 @@
 package com.mini.mini_2.facility.domain.dto;
 
+import com.mini.mini_2.client.rest_area.domain.RestAreaResponseDTO;
 import com.mini.mini_2.facility.domain.entity.FacilityEntity;
-import com.mini.mini_2.rest_area.domain.entity.RestAreaEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,9 +22,9 @@ public class FacilityRequestDTO {
     private String  name;
     private String  description;
     
-    public FacilityEntity toEntity(RestAreaEntity restArea) {
+    public FacilityEntity toEntity(RestAreaResponseDTO restArea) {
         return FacilityEntity.builder()
-                .restArea(restArea)
+                .restAreaId(restArea.getRestAreaId())
                 .name(this.name)
                 .description(this.description)
                 .build();

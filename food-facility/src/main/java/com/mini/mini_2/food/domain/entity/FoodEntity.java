@@ -20,7 +20,6 @@ import lombok.ToString;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = {"restArea"})
 public class FoodEntity {
     
     // PK

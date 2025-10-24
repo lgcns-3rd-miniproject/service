@@ -24,7 +24,7 @@ public class FacilityResponseDTO {
     public static FacilityResponseDTO fromEntity(FacilityEntity entity) {
         return FacilityResponseDTO.builder()
                 .facilityId(entity.getFacilityId())
-                .restAreaId(entity.getRestArea().getRestAreaId())
+                .restAreaId(entity.getRestAreaId())
                 .name(entity.getName())
                 .description(entity.getDescription())
                 .build();
