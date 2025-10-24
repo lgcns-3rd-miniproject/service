@@ -78,7 +78,7 @@ tasks.named('test') {
 }
 
 tasks.named('bootJar') {
-    archiveFileName = "restarea-unit-0.1.0-amd.jar" 
+    archiveFileName = "restarea-unit-service-0.1.1-amd.jar" 
 }
 
 tasks.named('jar') {
