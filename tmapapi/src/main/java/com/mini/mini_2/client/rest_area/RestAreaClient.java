@@ -18,10 +18,10 @@ public interface RestAreaClient {
     @GetMapping("/api/v1/mini/restarea/lists/restarea/{restAreaId}")
     RestAreaResponseDTO findById(@PathVariable("restAreaId") Integer restAreaId);
 
-    @GetMapping("/api/v1/mini/restarea/lists/restarea/{addr}")
+    @GetMapping("/api/v1/mini/restarea/lists/restarea/addr/{addr}")
     RestAreaResponseDTO findByAddress(@PathVariable("addr") String addr);
 
-    @GetMapping("/lists/restarea/addr/{addr}")
+    @GetMapping("/lists")
     List<RestAreaResponseDTO> findAll();
     
 }
