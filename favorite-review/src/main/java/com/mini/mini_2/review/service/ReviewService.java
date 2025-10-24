@@ -31,11 +31,11 @@ public class ReviewService {
     public ReviewResponseDTO create(ReviewRequestDTO request) {
         System.out.println("[ReviewService] create : "+ request);
         
-        UserResponseDTO userEntity = userClient.findById(request.getUserId());
-        RestAreaResponseDTO restAreaEntity = restAreaRepository.findById(request.getRestAreaId());
+        // UserResponseDTO userEntity = userClient.findById(request.getUserId());
+        // RestAreaResponseDTO restAreaEntity = restAreaRepository.findById(request.getRestAreaId());
         
-        System.out.println("user client : " + userEntity);
-        System.out.println("restarea client : " + restAreaEntity);
+        // System.out.println("user client : " + userEntity);
+        // System.out.println("restarea client : " + restAreaEntity);
 
         ReviewEntity entity = reviewRepository.save(request.toEntity());
         return ReviewResponseDTO.fromEntity(entity);

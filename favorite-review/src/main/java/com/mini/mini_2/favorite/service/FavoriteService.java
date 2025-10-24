@@ -30,11 +30,11 @@ public class FavoriteService {
     public FavoriteResponseDTO create(FavoriteRequestDTO request) {
         System.out.println("[FavoriteService] create : " +request);
         
-        UserResponseDTO userEntity = userClient.findById(request.getUserId());
-        RestAreaResponseDTO restAreaEntity = restAreaClient.findById(request.getRestAreaId());
+        // UserResponseDTO userEntity = userClient.findById(request.getUserId());
+        // RestAreaResponseDTO restAreaEntity = restAreaClient.findById(request.getRestAreaId());
         
-        System.out.println("user client : " + userEntity);
-        System.out.println("restarea client : " + restAreaEntity);
+        // System.out.println("user client : " + userEntity);
+        // System.out.println("restarea client : " + restAreaEntity);
         
         FavoriteEntity entity = favoriteRepository.save(request.toEntity());
         return FavoriteResponseDTO.fromEntity(entity);
