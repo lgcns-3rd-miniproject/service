@@ -17,13 +17,13 @@ import com.mini.mini_2.client.facility.domain.FacilityResponseDTO;
 )
 
 public interface FacilityClient {
-    @GetMapping("/api/v1/mini/restarea/lists/facility/{facilityId}")
-    FacilityResponseDTO findById(@PathVariable("facilityId") Integer facilityId);
+    // @GetMapping("/api/v1/mini/facility/lists/facility/{facilityId}")
+    // FacilityResponseDTO findById(@PathVariable("facilityId") Integer facilityId);
 
-    @GetMapping("/api/v1/mini/facility/lists")
-    List<FacilityResponseDTO> findAll();
+    // @GetMapping("/api/v1/mini/facility/lists")
+    // List<FacilityResponseDTO> findAll();
 
     @PostMapping("/api/v1/mini/facility/create")
-    FacilityResponseDTO create(FacilityRequestDTO restAreaRequestDTO);
+    FacilityResponseDTO create(FacilityRequestDTO facilityRequestDTO);
 
 }

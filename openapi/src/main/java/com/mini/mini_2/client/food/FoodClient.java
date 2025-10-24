@@ -17,11 +17,11 @@ import com.mini.mini_2.client.food.domain.FoodResponseDTO;
     url = "${GATEWAY_URL:http://service-food-1:8080}"
 )
 public interface FoodClient {
-    @GetMapping("/api/v1/mini/restarea/lists/food/{foodId}")
-    FoodResponseDTO findById(@PathVariable("foodId") Integer foodId);
+    // @GetMapping("/api/v1/mini/food/lists/food/{foodId}")
+    // FoodResponseDTO findById(@PathVariable("foodId") Integer foodId);
 
-    @GetMapping("/api/v1/mini/food/lists")
-    List<FoodResponseDTO> findAll();
+    // @GetMapping("/api/v1/mini/food/lists")
+    // List<FoodResponseDTO> findAll();
 
     @PostMapping("/api/v1/mini/food/create")
     FoodResponseDTO create(FoodRequestDTO foodRequestDTO);

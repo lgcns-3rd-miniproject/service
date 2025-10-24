@@ -11,8 +11,8 @@ import com.mini.mini_2.client.restarea.domain.RestAreaRequestDTO;
 import com.mini.mini_2.client.restarea.domain.RestAreaResponseDTO;
 
 @FeignClient(
-    name = "restArea-service", 
-    url = "${GATEWAY_URL:http://service-restArea-1:8080}"
+    name = "restarea-service", 
+    url = "${GATEWAY_URL:http://service-restarea-1:8080}"
 )
 public interface RestAreaClient {
     @GetMapping("/api/v1/mini/restarea/lists/restArea/{restAreaId}")
@@ -21,10 +21,10 @@ public interface RestAreaClient {
     @GetMapping("/api/v1/mini/restarea/code/{stdRestCd}")
     RestAreaResponseDTO findByCode(@PathVariable("stdRestCd")  String stdRestCd);
 
-    @GetMapping("/api/v1/mini/restArea/lists")
+    @GetMapping("/api/v1/mini/restarea/lists")
     List<RestAreaResponseDTO> findAll();
 
-    @PostMapping("/api/v1/mini/restArea/create")
+    @PostMapping("/api/v1/mini/restarea/create")
     RestAreaResponseDTO create(RestAreaRequestDTO restAreaRequestDTO);
 
 }
