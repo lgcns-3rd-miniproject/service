@@ -12,8 +12,8 @@ import com.mini.mini_2.client.rest_area.domain.RestAreaResponseDTO;
 
 
 @FeignClient(
-    name = "restArea-service", 
-    url = "${GATEWAY_URL:http://service-restArea-1:8080}"
+    name = "restarea-service", 
+    url = "${GATEWAY_URL:http://service-restarea-1:8080}"
 )
 public interface RestAreaClient {
 
