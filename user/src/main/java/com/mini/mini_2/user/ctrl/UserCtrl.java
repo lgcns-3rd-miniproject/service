@@ -18,6 +18,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import com.mini.mini_2.auth.TokenService;
 import java.util.Map;
@@ -176,5 +178,24 @@ public class UserCtrl {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
 
+    }
+    
+    @Operation(
+        summary = "회원 조회",
+        description = "사용자 ID로 회원 정보를 조회합니다."
+    )
+    @ApiResponses(
+        {
+            @ApiResponse(responseCode = "200", description = "Find User Success"),
+            @ApiResponse(responseCode = "404", description = "User Not Found")
+        }
+    )
+    @GetMapping("/{id}")
+    public ResponseEntity<UserResponseDTO> findById(@PathVariable("id") Integer id) {
+        UserResponseDTO response = userService.findById(id);
+        if (response == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+        return ResponseEntity.ok(response);
     }
 }

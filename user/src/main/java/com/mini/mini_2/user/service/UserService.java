@@ -56,4 +56,13 @@ public class UserService {
         return 1;
         
     }
+    
+    // 회원 조회 (by ID)
+    public UserResponseDTO findById(Integer userId) {
+        System.out.println("[UserService] findById : " + userId);
+        UserEntity entity = userRepository.findById(userId).orElse(null);
+        if (entity == null)
+            return null;
+        return UserResponseDTO.fromEntity(entity);
+    }
 }

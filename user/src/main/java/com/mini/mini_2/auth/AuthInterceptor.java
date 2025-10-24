@@ -19,6 +19,9 @@ public class AuthInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         System.out.println("VALIDATE FOR REQUEST URL : " + request.getRequestURI());
         
+        
+        return true;
+        /*
         if (HttpMethod.OPTIONS.matches(request.getMethod())) {
             return true;
         }
@@ -42,6 +45,8 @@ public class AuthInterceptor implements HandlerInterceptor {
         String userId = tokenService.getUserIdFromToken(token);
         request.setAttribute("userId", userId);
         return true;
+        
+        */
     }
 
     private void unauthorized(HttpServletResponse response, String message) throws Exception {
