@@ -18,6 +18,8 @@ public interface FoodClient {
     @PostMapping("/api/v1/mini/food/create")
     FoodResponseDTO create(FoodRequestDTO foodRequestDTO);
 
-    @GetMapping("/api/v1/mini/food/search/signature/{restAreaId}")
+    @GetMapping("/api/v1/mini/food/search/restarea/{restAreaId}")
     List<FoodResponseDTO> searchByRestAreaId(@PathVariable("restAreaId") Integer restAreaId);
+    
+    
 }

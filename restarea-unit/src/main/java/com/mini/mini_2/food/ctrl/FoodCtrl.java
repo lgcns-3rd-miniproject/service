@@ -154,4 +154,20 @@ public class FoodCtrl {
 
         return ResponseEntity.ok(responses);
     }
+    
+    @Operation(
+        summary = "휴게소 기반 조회",
+        description = "휴게소 id를 입력해주세요."
+    )
+
+    @GetMapping("/search/restarea/{restAreaId}")
+    public ResponseEntity<List<FoodResponseDTO>> searchFoodsByRestAreaId(@PathVariable("restAreaId") Integer restAreaId) {
+        List<FoodResponseDTO> responses = foodService.searchFoodsByRestAreaId(restAreaId);
+
+        if (responses.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responses);
+        }
+
+        return ResponseEntity.ok(responses);
+    }
 }

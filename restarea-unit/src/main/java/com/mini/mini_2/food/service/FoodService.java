@@ -107,6 +107,14 @@ public class FoodService {
                 .collect(Collectors.toList());
     }
 
+    // 메뉴 필터를 통한 음식 조회
+    public List<FoodResponseDTO> searchFoodsByRestAreaId(Integer restAreaId) {
+        
+        return foodRepository.findAllByRestAreaId(restAreaId).stream()
+                                                             .map(FoodResponseDTO::fromEntity)
+                                                             .toList();
+    }
+
     // 가격 필터를 통한 음식 조회
     public List<FoodResponseDTO> searchByPrice(double maxPrice) {
         return foodRepository.findAll().stream()
