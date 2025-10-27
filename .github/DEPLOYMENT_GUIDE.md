@@ -185,10 +185,3 @@ jobs:
 ### 서비스 재시작 실패
 - docker-compose.yml 서비스 이름 일치 확인
 - 컨테이너 이름 중복 확인
-
-## 📝 다음 단계
-
-1. GitHub Secrets 설정
-2. AWS 인스턴스에 docker-compose.yml 배치
-3. 워크플로우 파일의 경로 수정
-4. 테스트 커밋으로 자동 배포 확인
