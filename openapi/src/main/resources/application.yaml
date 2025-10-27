@@ -54,3 +54,5 @@ eureka:
       defaultZone: ${EUREKA_SERVER_URL:http://localhost:8765/eureka/}
   instance:
     prefer-ip-address: true
+    ip-address: ${EC2_SERVICE_PRIVATE_IP:http://localhost:8085}
+    non-secure-port: ${OPENAPI_PORT:8085}

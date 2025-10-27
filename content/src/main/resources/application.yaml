@@ -56,3 +56,5 @@ eureka:
 
   instance:
     prefer-ip-address: true
+    ip-address: ${EC2_SERVICE_PRIVATE_IP:http://localhost:8084}
+    non-secure-port: ${CONTENT_PORT:8084}
