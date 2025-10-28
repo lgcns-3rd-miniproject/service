@@ -52,7 +52,7 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: ${EUREKA_SERVER_URL:http://localhost:8765/eureka/}
-  instance:
-    prefer-ip-address: true
-    ip-address: ${EC2_SERVICE_PRIVATE_IP:http://localhost:8081}
-    non-secure-port: ${USER_PORT:8081}
+  # instance:
+  #   prefer-ip-address: true
+  #   ip-address: ${EC2_SERVICE_PRIVATE_IP:http://localhost:8081}
+  #   non-secure-port: ${USER_PORT:8081}
