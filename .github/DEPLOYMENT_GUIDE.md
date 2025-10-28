@@ -19,7 +19,7 @@ AWS_SSH_KEY          # EC2 접속용 Private Key (전체 내용)
 각 워크플로우 파일에서 다음 라인을 실제 경로로 수정:
 ```yaml
 script: |
-  cd /path/to/docker-compose  # << 실제 경로로 변경 필요
+  cd ~/service  # << 실제 경로로 변경 필요
 ```
 
 #### docker-compose.yml 예시

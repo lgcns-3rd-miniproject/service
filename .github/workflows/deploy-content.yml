@@ -44,7 +44,7 @@ jobs:
           username: ${{ secrets.AWS_USERNAME }}
           key: ${{ secrets.AWS_SSH_KEY }}
           script: |
-            cd /path/to/docker-compose
-            docker-compose pull mp3-service-content
-            docker-compose up -d mp3-service-content
-            docker image prune -f
+            cd ~/service
+            sudo docker compose pull mp3-service-content
+            sudo docker compose up -d mp3-service-content
+            sudo docker image prune -f
