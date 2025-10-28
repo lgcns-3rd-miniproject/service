@@ -45,6 +45,6 @@ jobs:
           key: ${{ secrets.AWS_SSH_KEY }}
           script: |
             cd ~/service
-            sudo docker compose pull mp3-service-user
-            sudo docker compose up -d mp3-service-user
+            sudo docker compose pull ${{ secrets.DOCKER_USERNAME }}/mp3-service-user:stg
+            sudo docker compose up -d user
             sudo docker image prune -f
