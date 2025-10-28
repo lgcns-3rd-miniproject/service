@@ -45,6 +45,6 @@ jobs:
           key: ${{ secrets.AWS_SSH_KEY }}
           script: |
             cd ~/service
-            docker compose pull mp3-service-openapi
-            docker compose up -d mp3-service-openapi
-            docker image prune -f
+            sudo docker compose pull openapi
+            sudo docker compose up -d openapi
+            sudo docker image prune -f

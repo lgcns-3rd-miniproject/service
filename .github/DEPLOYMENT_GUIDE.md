@@ -19,7 +19,7 @@ AWS_SSH_KEY          # EC2 접속용 Private Key (전체 내용)
 각 워크플로우 파일에서 다음 라인을 실제 경로로 수정:
 ```yaml
 script: |
-  cd /path/to/docker-compose  # << 실제 경로로 변경 필요
+  cd ~/service  # << 실제 경로로 변경 필요
 ```
 
 #### docker-compose.yml 예시
@@ -185,10 +185,3 @@ jobs:
 ### 서비스 재시작 실패
 - docker-compose.yml 서비스 이름 일치 확인
 - 컨테이너 이름 중복 확인
-
-## 📝 다음 단계
-
-1. GitHub Secrets 설정
-2. AWS 인스턴스에 docker-compose.yml 배치
-3. 워크플로우 파일의 경로 수정
-4. 테스트 커밋으로 자동 배포 확인

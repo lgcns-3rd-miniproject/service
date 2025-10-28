@@ -45,6 +45,6 @@ jobs:
           key: ${{ secrets.AWS_SSH_KEY }}
           script: |
             cd ~/service
-            docker compose pull mp3-service-tmapapi
-            docker compose up -d mp3-service-tmapapi
-            docker image prune -f
+            sudo docker compose pull tmapapi
+            sudo docker compose up -d tmapapi
+            sudo docker image prune -f

@@ -45,6 +45,6 @@ jobs:
           key: ${{ secrets.AWS_SSH_KEY }}
           script: |
             cd ~/service
-            docker compose pull mp3-service-restarea-unit
-            docker compose up -d mp3-service-restarea-unit
-            docker image prune -f
+            sudo docker compose pull restarea-unit
+            sudo docker compose up -d restarea-unit
+            sudo docker image prune -f
