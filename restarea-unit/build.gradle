@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.mini'
-version = '0.2.1'
+version = '0.2.0'
 description = 'Demo project for Spring Boot'
 
 java {
@@ -53,13 +53,13 @@ dependencies {
 
 	// redis
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-	
-	// feign client
-	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:4.1.0'
 
-	// eureka client
+    // feign client
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:4.1.0'
+
+    // eureka client
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:4.1.0'
-    
+
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.5'
@@ -75,4 +75,12 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+tasks.named('bootJar') {
+    archiveFileName = "restarea-unit-service-0.1.1-amd.jar" 
+}
+
+tasks.named('jar') {
+    enabled = false
 }

@@ -12,7 +12,8 @@ import com.mini.mini_2.client.food.domain.FoodResponseDTO;
 
 
 @FeignClient(
-    name = "restarea-unit-service"
+    name = "restarea-unit-service",
+    contextId = "food-service"
 )
 public interface FoodClient {
     

@@ -78,7 +78,7 @@ public class RestAreaCtrl {
         if (response != null) {
             return new ResponseEntity<>(response, HttpStatus.OK); 
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND); 
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND); 
         }
     }
     
@@ -96,7 +96,7 @@ public class RestAreaCtrl {
         if (response != null) {
             return new ResponseEntity<>(response, HttpStatus.OK); 
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND); 
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND); 
         }
     }
     
@@ -114,7 +114,7 @@ public class RestAreaCtrl {
         if (response != null) {
             return new ResponseEntity<>(response, HttpStatus.OK); 
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND); 
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND); 
         }
     }
 

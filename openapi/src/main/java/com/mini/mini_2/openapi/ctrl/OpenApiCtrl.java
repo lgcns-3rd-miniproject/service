@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import feign.FeignException;
 import com.mini.mini_2.client.facility.FacilityClient;
 import com.mini.mini_2.client.food.FoodClient;
 import com.mini.mini_2.client.food.domain.FoodRequestDTO;
@@ -74,6 +75,7 @@ public class OpenApiCtrl {
     @GetMapping("restarea_update")
     public ResponseEntity<Void> restarea_update(@ModelAttribute RestAreaInfoApiRequestDTO request) {
         RestAreaInfoApiResponseDTO responses = restAreaInfoApiService.info(request);
+        System.out.println("[UPDATE TEST] response : " + responses);
         System.out.println("[UPDATE TEST] request : " + responses.getCount());
         
         for (RestAreaInfoDTO restarea : responses.getList()) {
@@ -137,8 +139,13 @@ public class OpenApiCtrl {
         for (FoodDTO food : responses.getList()) {
             System.out.println("[DEBUG] food.getStdRestCd -> " + food.getStdRestCd());
             System.out.println("[DEBUG] food.getStdRestCd length -> " + food.getStdRestCd().length());
-            RestAreaResponseDTO restarea = restAreaClient.findByCode(food.getStdRestCd());
-            
+            RestAreaResponseDTO restarea = null;
+            try {
+                restarea = restAreaClient.findByCode(food.getStdRestCd());
+            } catch (FeignException.NotFound e) {
+                System.out.println("[DEBUG] restarea not found. code : " + food.getStdRestCd());
+                continue;
+            }            
             if (restarea == null) continue;
             
             FoodRequestDTO foodRequest = FoodRequestDTO.builder()
@@ -173,8 +180,14 @@ public class OpenApiCtrl {
         for (FacilityDTO facility : responses.getList()) {
             System.out.println("[DEBUG] facility.getStdRestCd -> " + facility.getStdRestCd());
             System.out.println("[DEBUG] facility.getStdRestCd length -> " + facility.getStdRestCd().length());
-            RestAreaResponseDTO restarea = restAreaClient.findByCode(facility.getStdRestCd());
-            
+            RestAreaResponseDTO restarea = null;
+            try {
+                restarea = restAreaClient.findByCode(facility.getStdRestCd());
+            } catch (FeignException.NotFound e) {
+                System.out.println("[DEBUG] RestArea not found. code : " + facility.getStdRestCd());
+                continue;
+            }
+
             if(restarea == null) continue;
             
             FacilityRequestDTO facilityRequest = FacilityRequestDTO.builder()

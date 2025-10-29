@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.mini'
-version = '0.2.1'
+version = '0.2.0'
 description = 'Demo project for Spring Boot'
 
 java {
@@ -43,23 +43,19 @@ dependencies {
 	// env
 	// 보안 상 중요한 정호를 github에 올리지 않도록
 	implementation 'io.github.cdimascio:dotenv-java:3.0.0'
-	
-	// open ai
-	implementation 'com.squareup.okhttp3:okhttp:4.12.0'
-	implementation 'com.fasterxml.jackson.core:jackson-databind'
 
 	// web client
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 
 	// redis
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-	
+
 	// feign client
 	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:4.1.0'
 
 	// eureka client
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:4.1.0'
-    
+
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.5'

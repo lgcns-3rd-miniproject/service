@@ -28,7 +28,7 @@ public class RestAreaInfoApiService {
                 "&svarGsstClssCd=0" +
                 "&key=" + appKey;
         if (request.getSvarCd() != "") {
-            url = url + "&stdRestCd=" + request.getSvarCd();
+            url = url + "&svarCd=" + request.getSvarCd();
         }
         System.out.println("[WEB CLIENT] GET URL " + url);
         return restAreaInfoWebClient.get()

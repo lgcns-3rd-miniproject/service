@@ -15,13 +15,13 @@ public class WebConfig implements WebMvcConfigurer {
         this.authInterceptor = authInterceptor;
     }
 
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-                .allowedOriginPatterns("*")
-                .allowedMethods("*")
-                .allowCredentials(true);
-    }
+    // @Override
+    // public void addCorsMappings(CorsRegistry registry) {
+    //     registry.addMapping("/**")
+    //             .allowedOriginPatterns("*")
+    //             .allowedMethods("*")
+    //             .allowCredentials(true);
+    // }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {

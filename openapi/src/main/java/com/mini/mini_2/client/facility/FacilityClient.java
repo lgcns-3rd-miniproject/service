@@ -9,7 +9,8 @@ import com.mini.mini_2.client.facility.domain.FacilityResponseDTO;
 
 
 @FeignClient(
-    name = "restarea-unit-service"
+    name = "restarea-unit-service",
+    contextId = "facility-service"
 )
 
 public interface FacilityClient {

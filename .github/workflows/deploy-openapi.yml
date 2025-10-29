@@ -1,0 +1,50 @@
+name: Deploy OpenAPI Service
+
+on:
+  push:
+    branches:
+      - stg
+    paths:
+      - 'openapi/**'
+      - '.github/workflows/deploy-openapi.yml'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./openapi
+          file: ./openapi/dockerfile
+          push: true
+          tags: |
+            ${{ secrets.DOCKER_USERNAME }}/mp3-service-openapi:stg
+            ${{ secrets.DOCKER_USERNAME }}/mp3-service-openapi:${{ github.sha }}
+          cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/mp3-service-openapi:stg
+          cache-to: type=inline
+
+      - name: Deploy to AWS Instance
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.AWS_HOST }}
+          username: ${{ secrets.AWS_USERNAME }}
+          key: ${{ secrets.AWS_SSH_KEY }}
+          script: |
+            cd ~/service
+            sudo docker compose pull openapi
+            sudo docker compose up -d openapi
+            sudo docker image prune -f
