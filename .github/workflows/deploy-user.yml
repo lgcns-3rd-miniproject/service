@@ -31,6 +31,7 @@ jobs:
           context: ./user
           file: ./user/dockerfile
           push: true
+          platforms: linux/amd64,linux/arm64
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/mp3-service-user:stg
             ${{ secrets.DOCKER_USERNAME }}/mp3-service-user:${{ github.sha }}

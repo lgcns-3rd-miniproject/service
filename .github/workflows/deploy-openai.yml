@@ -31,6 +31,7 @@ jobs:
           context: ./openai
           file: ./openai/dockerfile
           push: true
+          platforms: linux/amd64,linux/arm64
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/mp3-service-openai:stg
             ${{ secrets.DOCKER_USERNAME }}/mp3-service-openai:${{ github.sha }}
